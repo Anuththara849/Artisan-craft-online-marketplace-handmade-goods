@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Product</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f1ed ;
+        }
+
+
+        .kkk{
+            /* border: 2px solid green; */
+            display: flex;
+            width: auto;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* background: url('forproductbak.jpg') no-repeat 0 -500px; */
+        }
+        .upload-container {
+            padding: 500px;
+            
+            background: #ffffff21;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 700px;
+            text-align: center;
+        }
+         h2 {
+            font-size: 40px;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            color:#D79922 ;
+            font-family: serif;
+        }
+        .upload-container input[type="text"],
+        .upload-container input[type="number"],
+        .upload-container input[type="file"],
+        .upload-container select,
+        .upload-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px ;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .upload-container select{
+            width: 720px;
+        }
+        .upload-container button {
+            width: 48%;
+            padding: 10px;
+            background: #4056A1;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 2px solid white;
+        }
+        .upload-container button:hover {
+            background: #C5CBE3;
+            color: black;
+            border: 2px solid #4056A1;
+        }
+        /* .upload-container .cancel-button {
+            background: #e8491d;
+        } */
+        .upload-container .cancel-button:hover {
+            background: #C5CBE3;
+            color: black;
+            border: 2px solid #4056A1;
+        }
+
+
+        nav {
+            background-color:#4056A1 ;
+            color: black;
+            /* padding: 10px; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            text-align:center;
+            color: black;
+            text-decoration: none;
+            margin-left:  25px;
+            margin-top:60px;
+            font-family:monospace;
+            font-size:18px;
+            /* padding-left:10px; */
+            /* border:2px solid red; */
+        }
+
+        nav a:hover{
+            /* background-color:#1A4D2E; */
+            color:#F13C20;
+        }
+
+        .container{
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content:center;
+        }
+
+        .navtitle{
+            margin-top:10px;
+            margin-left:20px;
+            /* border:2px solid red; */
+            display:flex;
+            height:30px;
+        }
+
+        .titles{
+        font-size:33px;
+        font-family:cursive;
+        color:white;
+        }
+
+        footer {
+            padding: 20px;
+            background: #4056A1;
+            color: #000;
+            text-align: center;
+        }
+
+        .colors{
+    color:#F13C20;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1 class="titles">Artisan Craft</h1>
+     
+
+            <div class="navtitle">
+
+                <a href="index.php">Home</a>
+                <a href="register.html">Register</a>
+                <a href="login.php">Login</a>
+                <?php if (isset($_SESSION['user_id'])) { ?>
+                    <a class="colors" href="product_upload.html">Upload Product</a>
+                    <a href="manage_products.php">Manage Products</a>
+                    <a href="product_view.php">View Products</a>
+                    <a href="cart.php">Cart</a>
+                    <a href="profile.php">My Profile</a>
+                    <a href="logout.php">Logout</a>
+                    
+                    
+
+                <?php } ?>
+            </div>
+        </div>
+    </nav>
+
+
+    <h2>Upload Product</h2>
+
+<div class="kkk">
+    <div class="upload-container">
+        
+        <form method="post" action="product_upload.php" enctype="multipart/form-data">
+            <input type="text" name="product_name" placeholder="Product Name" required>
+            <select name="product_type" required>
+                <option value="">Select Product Type</option>
+                <option value="jewellery">Jewellery</option>
+                <option value="pottery">Pottery</option>
+                <option value="paper_craft">Paper Craft</option>
+                <option value="metal_working">Metal Working</option>
+                <option value="leather_working">Leather Working</option>
+                <option value="textile_arts">Textile Arts</option>
+                <option value="wood_working">Wood Working</option>
+                <option value="glass_working">Glass Working</option>
+                <option value="others">Others</option>
+            </select>
+            <input type="number" name="product_price" placeholder="Product Price" required>
+            <textarea name="product_details" placeholder="Product Details" rows="4" required></textarea>
+            <input type="number" name="product_quantity" placeholder="Product Quantity" required>
+            <input type="file" name="product_photos[]" accept="image/*" multiple required>
+            <button type="submit">Upload Product</button>
+            <button type="button" class="cancel-button" onclick="window.location.href='index.php'">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>Artisan Craft &copy; 2024</p>
+</footer>
+</body>
+</html>
